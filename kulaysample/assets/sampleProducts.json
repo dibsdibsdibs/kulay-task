@@ -1,27 +1,27 @@
 [
     {
-        "id": 1,
+        "id": "1",
         "image": "burger",
         "productName": "Burger",
         "description": "Quarter-pound burger",
         "price": 74.99
     },
     {
-        "id": 2,
+        "id": "2",
         "image": "fries",
         "productName": "Fries",
         "description": "Potato fries with cheese powder",
         "price": 49.99
     },
     {
-        "id": 3,
+        "id": "3",
         "image": "nuggets",
         "productName": "Nuggets",
         "description": "Ten pieces of chicken nuggets",
         "price": 89.99
     },
     {
-        "id": 4,
+        "id": "4",
         "image": "icecream",
         "productName": "Ice Cream",
         "description": "Three scoops of vanilla ice cream topped with sprinkles.",

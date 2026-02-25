@@ -1,14 +1,19 @@
-import { Text, View, Image } from "react-native";
+import { Text, View, Image, Pressable } from "react-native";
 import { images } from "../utils/images";
 import { Product } from "@/types/product";
 
 export default function ProductCard({
-    product
+    product,
+    onPress,
 } : {
     product: Product
+    onPress: () => void,
 }) {
     return (
-        <View className="flex flex-col w-40 h-64 bg-emerald-500 shadow p-4 items-center rounded-lg shadow">
+        <Pressable 
+            className="flex flex-col w-40 h-64 bg-emerald-500 shadow p-4 items-center rounded-lg shadow"
+            onPress={onPress}
+        >
             <View className="w-24 h-24 rounded-lg overflow-hidden items-center justify-center">
                 <Image
                     source={images[product.image]}
@@ -19,6 +24,6 @@ export default function ProductCard({
             <Text className="mt-2 font-black">{product.productName}</Text>
             <Text className="text-gray-100 text-sm">{product.description}</Text>
             <Text className="font-bold">PHP{product.price}</Text>
-        </View>
+        </Pressable >
     );
 }
