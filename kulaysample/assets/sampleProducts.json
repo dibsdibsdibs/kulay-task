@@ -1,0 +1,28 @@
+{
+    "sampleProducts" : [
+        {
+            "id": 1,
+            "productName": "Burger",
+            "description": "Quarter-pound burger",
+            "price": 74.99
+        },
+        {
+            "id": 2,
+            "productName": "Fries",
+            "description": "Potato fries with cheese powder",
+            "price": 49.99
+        },
+        {
+            "id": 3,
+            "productName": "Nuggets",
+            "description": "Ten pieces of chicken nuggets",
+            "price": 89.99
+        },
+        {
+            "id": 4,
+            "productName": "Ice Cream",
+            "description": "Three scoops of vanilla ice cream topped with sprinkles.",
+            "price": 39.99
+        }
+    ]
+}
