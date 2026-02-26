@@ -37,19 +37,21 @@ export default function CartScreen() {
                         <Text className="text-red-500 text-lg font-semibold">Remove All</Text>
                     </Pressable>
                 </View>
-                {cart.length === 0 ? (
-                    <Text>Your cart is empty</Text>
-                ) : (
-                    cart.map((item, index) => (
-                        <CartCard 
-                            key={index} 
-                            item={item} 
-                            dispatch={dispatch}
-                            handleDecreaseQuantity={handleDecreaseQuantity}
-                            handleIncreaseQuantity={handleIncreaseQuantity}
-                        />
-                    ))
-                )}
+                <View className="overflow-auto">
+                    {cart.length === 0 ? (
+                        <Text>Your cart is empty</Text>
+                    ) : (
+                        cart.map((item, index) => (
+                            <CartCard 
+                                key={index} 
+                                item={item} 
+                                dispatch={dispatch}
+                                handleDecreaseQuantity={handleDecreaseQuantity}
+                                handleIncreaseQuantity={handleIncreaseQuantity}
+                            />
+                        ))
+                    )}
+                </View>
                 <View className="flex flex-row items-center justify-end gap-2">
                     <Text>Total:</Text>
                     <Text className="text-xl font-bold">{total}</Text>
