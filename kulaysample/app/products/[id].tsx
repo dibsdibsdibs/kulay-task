@@ -12,15 +12,12 @@ export default function FullProduct() {
     const navigation = useNavigation();
     const params = useLocalSearchParams<{ id: string }>();
     const id = params.id;
-    const [selectedQuantity, setSelectedQuantity] = useState(1); 
-
-    if (!id) return <Text>Product not found</Text>;
-
     const product: Product | undefined = sampleProducts.find(
         (p) => p.id === id
     );
-
-    if (!product) return <Text>Product not found</Text>;
+    if (!id) return <Text>Product not found</Text>;
+    const [selectedQuantity, setSelectedQuantity] = useState(1);
+    const totalPrice = (product?.price ?? 0) * selectedQuantity;
 
     useLayoutEffect(() => {
         navigation.setOptions({
@@ -30,16 +27,22 @@ export default function FullProduct() {
     }, [navigation]);
 
     const handleIncreaseQuantity = () => {
-        setSelectedQuantity(prev => prev + 1);
+        if(product?.price){
+            setSelectedQuantity(prev => prev + 1);
+        }
     }
 
     const handleDecreaseQuantity = () => {
-        if(selectedQuantity > 0) setSelectedQuantity(prev => prev - 1);
+        if(product?.price && selectedQuantity > 0){
+            setSelectedQuantity(prev => prev - 1);
+        }
     }
 
+    if (!product) return <Text>Product not found</Text>;
+
     return(
-        <SafeAreaView className="items-center flex-1">
-            <View className="w-full h-36 overflow-hidden items-center justify-center">
+        <SafeAreaView className="flex self-center items-center md:w-1/2 w-full shadow bg-white h-full">
+            <View className="w-full md:h-72 h-56 overflow-hidden items-center justify-center">
                 <Image
                     source={images[product.image]}
                     className="flex-1"
@@ -68,13 +71,15 @@ export default function FullProduct() {
                     <Text className="font-black">-</Text>
                 </Pressable>
             </View>
-            <Pressable
-                onPress={() => {}}
-                className="rounded-full w-56 bg-green px-4 py-4 flex flex-row items-center justify-between"
-            >
-                <Text className="text-lg font-semibold">Add to Cart</Text>
-                <Text className="text-lg font-semibold">{product.price}</Text>
-            </Pressable>
+            <View className="absolute bottom-10">
+                <Pressable
+                    onPress={() => {}}
+                    className="rounded-full w-64 bg-green px-4 py-4 flex flex-row items-center justify-between"
+                >
+                    <Text className="text-lg font-semibold">Add to Cart</Text>
+                    <Text className="text-lg font-semibold">{totalPrice.toFixed(2)}</Text>
+                </Pressable>
+            </View>
         </SafeAreaView>
     )
 }
