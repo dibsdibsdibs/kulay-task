@@ -5,10 +5,15 @@ import sampleProducts from "../../assets/sampleProducts.json";
 import { useLocalSearchParams } from "expo-router";
 import { images } from "@/utils/images";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { useDispatch } from "react-redux";
+import { addToCart } from "@/utils/store";
+import { useRouter } from "expo-router";
 
 export default function FullProduct() {
     const params = useLocalSearchParams<{ id: string }>();
     const id = params.id;
+    const dispatch = useDispatch();
+    const router = useRouter();
     const product: Product | undefined = sampleProducts.find(
         (p) => p.id === id
     );
@@ -29,6 +34,18 @@ export default function FullProduct() {
     }
 
     if (!product) return <Text>Product not found</Text>;
+
+    const handleAddToCart = () => {
+        dispatch(
+            addToCart({
+                id: product.id,
+                name: product.productName,
+                price: totalPrice,
+                quantity: selectedQuantity,
+            })
+        );
+        router.back();
+    };
 
     return(
         <SafeAreaView className="flex flex-col self-center items-center md:w-1/2 w-full h-full shadow bg-white">
@@ -63,7 +80,7 @@ export default function FullProduct() {
             </View>
             <View className="absolute bottom-20">
                 <Pressable
-                    onPress={() => {}}
+                    onPress={handleAddToCart}
                     className="rounded-full w-64 bg-green px-4 py-4 flex flex-row items-center justify-between"
                 >
                     <Text className="text-lg font-semibold text-white">Add to Cart</Text>
