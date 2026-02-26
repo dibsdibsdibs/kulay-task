@@ -1,6 +1,7 @@
-import { View, Text, Pressable } from "react-native";
+import { View, Text, Pressable, Image } from "react-native";
 import { RootState, clearCart, addQuantityOfProduct, removeQuantityOfProduct } from "../../utils/store";
 import { CartItem } from "@/types/cart";
+import { images } from "@/utils/images";
 
 export default function CartCard({
     dispatch,
@@ -15,8 +16,15 @@ export default function CartCard({
 }){
     return(
         <View key={item.id} className="flex-row justify-between items-center my-2">
-            <View className="flex-1">
-                <Text className="font-bold text-lg">{item.name}</Text>
+            <View className="flex-1 flex-row gap-2">
+                <View className="md:w-24 md:h-24 rounded-lg overflow-hidden items-center justify-center">
+                    <Image
+                        source={images[item.image]}
+                        className="flex-1"
+                        resizeMode="contain"
+                    />
+                </View>
+                <Text className="font-semibold text-lg">{item.name}</Text>
             </View>
             <View className="flex-1 flex-row items-center justify-center gap-3">
                 <Pressable

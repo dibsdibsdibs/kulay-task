@@ -42,6 +42,7 @@ export default function FullProductScreen() {
                 name: product.productName,
                 price: product.price,
                 quantity: selectedQuantity,
+                image: product.image,
             })
         );
         router.back();
