@@ -58,12 +58,12 @@ export default function FullProductScreen() {
                     resizeMode="contain"
                 />
             </View>
-            <View className="px-6 mt-4 w-full flex md:flex-row flex-col gap-4">
+            <View className="px-6 mt-4 w-full flex md:flex-row flex-col gap-2">
                 <View className="flex-row items-center w-full">
-                    <Text className="text-xl font-semibold flex-1 mr-2">
-                        COKE FLOAT COKE FLOAT COKE FLOAT COKE FLOAT COKE FLOAT COKE FLOAT
+                    <Text className="text-2xl font-semibold flex-1 mr-2">
+                        {product.productName}
                     </Text>
-                    <Text className="text-xl font-semibold">
+                    <Text className="text-2xl font-semibold">
                         {product.price}
                     </Text>
                 </View>
