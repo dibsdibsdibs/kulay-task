@@ -9,7 +9,7 @@ import { useDispatch } from "react-redux";
 import { addToCart } from "@/utils/store";
 import { useRouter } from "expo-router";
 
-export default function FullProduct() {
+export default function FullProductScreen() {
     const params = useLocalSearchParams<{ id: string }>();
     const id = params.id;
     const dispatch = useDispatch();
