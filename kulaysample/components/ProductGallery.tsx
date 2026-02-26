@@ -11,7 +11,7 @@ export default function ProductGallery({
     const router = useRouter();
 
     return(
-        <View className="flex flex-1 gap-4 flex-row mt-2">
+        <View className="flex flex-1 gap-4 flex-row mt-2 flex-wrap overflow-auto p-1">
             {productsList.map((product: Product, index: number) => (
                 <ProductCard
                     key={index}

@@ -58,17 +58,17 @@ export default function FullProduct() {
             </View>
             <View className="w-24 flex flex-row items-center justify-between">
                 <Pressable
-                    onPress={handleIncreaseQuantity}
-                    className="rounded-full bg-green p-2 flex items-center justify-center"
-                >
-                    <Text className="font-black">+</Text>
-                </Pressable>
-                <Text>{selectedQuantity}</Text>
-                <Pressable
                     onPress={handleDecreaseQuantity}
                     className="rounded-full bg-green p-2 flex items-center justify-center"
                 >
                     <Text className="font-black">-</Text>
+                </Pressable>
+                <Text>{selectedQuantity}</Text>
+                <Pressable
+                    onPress={handleIncreaseQuantity}
+                    className="rounded-full bg-green p-2 flex items-center justify-center"
+                >
+                    <Text className="font-black">+</Text>
                 </Pressable>
             </View>
             <View className="absolute bottom-10">

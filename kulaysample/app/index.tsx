@@ -15,8 +15,8 @@ export default function Index() {
   }, [navigation]);
 
   return (
-    <View className="flex-1 p-8">
-      <Text className="font-bold text-5xl">MENU</Text>
+    <View className="flex-1 md:p-8 p-2">
+      <Text className="font-bold text-3xl">MENU</Text>
       <ProductGallery productsList={sampleProducts} />
     </View>
   );
