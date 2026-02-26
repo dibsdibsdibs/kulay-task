@@ -39,8 +39,8 @@ export default function FullProduct() {
                     resizeMode="cover"
                 />
             </View>
-            <View className="p-4 w-full">
-                <View className="flex-1 flex-row justify-between items-center w-full">
+            <View className="p-4 w-full md:flex-row flex-col">
+                <View className="flex-1 md:flex-row flex-col justify-between items-center w-full">
                     <Text className="text-xl font-bold">{product.productName}</Text>
                     <Text className="text-xl font-bold">PHP{product.price}</Text>
                 </View>
@@ -66,7 +66,7 @@ export default function FullProduct() {
                     onPress={() => {}}
                     className="rounded-full w-64 bg-green px-4 py-4 flex flex-row items-center justify-between"
                 >
-                    <Text className="text-lg font-semibold">Add to Cart</Text>
+                    <Text className="text-lg font-semibold font-white">Add to Cart</Text>
                     <Text className="text-lg font-semibold">{totalPrice.toFixed(2)}</Text>
                 </Pressable>
             </View>

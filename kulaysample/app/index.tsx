@@ -8,7 +8,6 @@ export default function Index() {
 
   return (
     <View className="flex-1 md:p-8 p-2">
-      <Text className="font-bold text-3xl">MENU</Text>
       <ProductGallery productsList={sampleProducts} />
     </View>
   );
