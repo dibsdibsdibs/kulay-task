@@ -12,9 +12,6 @@ import CartCard from "@/components/cart/CartCard";
 export default function CartScreen() {
     const cart = useSelector((state: RootState) => state.cart.items);
     const dispatch = useDispatch();
-
-    console.log(cart);
-
     const total = cart.reduce((acc, item) => acc + item.price * item.quantity, 0).toFixed(2);
 
     const handleIncreaseQuantity = (id: string) => {
@@ -37,9 +34,11 @@ export default function CartScreen() {
                         <Text className="text-red-500 text-lg font-semibold">Remove All</Text>
                     </Pressable>
                 </View>
-                <View className="overflow-auto">
+                <View className="overflow-auto min-h-96">
                     {cart.length === 0 ? (
-                        <Text>Your cart is empty</Text>
+                        <View className="h-full w-full items-center justify-center ">
+                            <Text className="font-semibold">Your cart is empty.</Text>
+                        </View>
                     ) : (
                         cart.map((item, index) => (
                             <CartCard 
