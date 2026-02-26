@@ -31,16 +31,16 @@ export default function FullProduct() {
     if (!product) return <Text>Product not found</Text>;
 
     return(
-        <SafeAreaView className="flex self-center items-center md:w-1/2 w-full shadow bg-white h-full">
+        <SafeAreaView className="flex flex-col self-center items-center md:w-1/2 w-full h-full shadow bg-white">
             <View className="w-full md:h-72 h-56 overflow-hidden items-center justify-center">
                 <Image
                     source={images[product.image]}
-                    className="flex-1"
+                    className="flex"
                     resizeMode="cover"
                 />
             </View>
-            <View className="p-4 w-full md:flex-row flex-col">
-                <View className="flex-1 md:flex-row flex-col justify-between items-center w-full">
+            <View className="p-4 w-full flex md:flex-row flex-col">
+                <View className="flex flex-row justify-between items-center w-full">
                     <Text className="text-xl font-bold">{product.productName}</Text>
                     <Text className="text-xl font-bold">PHP{product.price}</Text>
                 </View>
@@ -51,23 +51,23 @@ export default function FullProduct() {
                     onPress={handleDecreaseQuantity}
                     className="rounded-full bg-green p-2 flex items-center justify-center"
                 >
-                    <Text className="font-black">-</Text>
+                    <Text className="font-black text-white">-</Text>
                 </Pressable>
                 <Text>{selectedQuantity}</Text>
                 <Pressable
                     onPress={handleIncreaseQuantity}
                     className="rounded-full bg-green p-2 flex items-center justify-center"
                 >
-                    <Text className="font-black">+</Text>
+                    <Text className="font-black text-white">+</Text>
                 </Pressable>
             </View>
-            <View className="absolute bottom-10">
+            <View className="absolute bottom-20">
                 <Pressable
                     onPress={() => {}}
                     className="rounded-full w-64 bg-green px-4 py-4 flex flex-row items-center justify-between"
                 >
-                    <Text className="text-lg font-semibold font-white">Add to Cart</Text>
-                    <Text className="text-lg font-semibold">{totalPrice.toFixed(2)}</Text>
+                    <Text className="text-lg font-semibold text-white">Add to Cart</Text>
+                    <Text className="text-lg font-semibold text-white">{totalPrice.toFixed(2)}</Text>
                 </Pressable>
             </View>
         </SafeAreaView>
