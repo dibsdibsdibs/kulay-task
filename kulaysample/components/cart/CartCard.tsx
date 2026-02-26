@@ -2,6 +2,7 @@ import { View, Text, Pressable, Image } from "react-native";
 import { RootState, clearCart, addQuantityOfProduct, removeQuantityOfProduct } from "../../utils/store";
 import { CartItem } from "@/types/cart";
 import { images } from "@/utils/images";
+import QuantityControl from "../QuantityControl";
 
 export default function CartCard({
     dispatch,
@@ -26,21 +27,11 @@ export default function CartCard({
                 </View>
                 <View className="flex flex-col gap-2">
                     <Text className="font-semibold text-lg">{item.name}</Text>
-                    <View className="flex-row items-center justify-center gap-4 border-2 rounded-full border-gray-300">
-                        <Pressable
-                            onPress={() => {handleDecreaseQuantity(item.id)}}
-                            className="rounded-full bg-green w-8 h-8 flex items-center justify-center"
-                        >
-                            <Text className="font-black text-2xl text-white">-</Text>
-                        </Pressable>
-                        <Text className="font-medium">{item.quantity}</Text>
-                        <Pressable
-                            onPress={() => {handleIncreaseQuantity(item.id)}}
-                            className="rounded-full bg-green w-8 h-8 flex items-center justify-center"
-                        >
-                            <Text className="font-black text-2xl text-white">+</Text>
-                        </Pressable>
-                    </View>
+                    <QuantityControl 
+                        handleDecreaseQuantity={() => {handleDecreaseQuantity(item.id)}}
+                        handleIncreaseQuantity={() => {handleIncreaseQuantity(item.id)}}
+                        quantity={item.quantity}
+                    />
                 </View>
             </View>
             <View className="flex items-center">

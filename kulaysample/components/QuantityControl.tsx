@@ -10,7 +10,7 @@ export default function QuantityControl({
     quantity: any,
 }){
     return(
-        <View className="w-24 flex flex-row items-center justify-between">
+        <View className="w-100 flex flex-row items-center justify-between gap-4 border-2 rounded-full border-gray-300">
             <Pressable
                 onPress={handleDecreaseQuantity}
                 className="rounded-full bg-green w-8 h-8 flex items-center justify-center"
