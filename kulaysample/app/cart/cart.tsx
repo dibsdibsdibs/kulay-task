@@ -50,9 +50,9 @@ export default function CartScreen() {
                         />
                     ))
                 )}
-                <View className="flex flex-row items-center">
+                <View className="flex flex-row items-center justify-end gap-2">
                     <Text>Total:</Text>
-                    <Text className="text-2xl font-bold">{total}</Text>
+                    <Text className="text-xl font-bold">{total}</Text>
                 </View>
             </View>
         </View>

@@ -42,7 +42,7 @@ export default function CartCard({
                 </Pressable>
             </View>
             <View className="flex-1">
-                <Text className="font-medium text-center">PHP {(item.price * item.quantity).toFixed(2)}</Text>
+                <Text className="font-medium text-right">{(item.price * item.quantity).toFixed(2)}</Text>
             </View>
         </View>
     )
