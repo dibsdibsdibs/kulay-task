@@ -50,14 +50,14 @@ export default function FullProductScreen() {
 
     return(
         <SafeAreaView className="flex flex-col self-center items-center md:w-1/2 w-full h-full shadow bg-white">
-            <View className="w-full md:h-96 h-56 overflow-hidden items-center justify-center">
+            <View className="w-full md:h-96 h-64 overflow-hidden items-center justify-center">
                 <Image
                     source={images[product.image]}
-                    className="flex"
+                    className="flex-1"
                     resizeMode="cover"
                 />
             </View>
-            <View className="p-4 w-full flex flex-row md:flex-col">
+            <View className="p-4 w-full flex md:flex-row flex-col">
                 <View className="flex flex-row justify-between items-center w-full">
                     <Text className="text-xl font-bold">{product.productName}</Text>
                     <Text className="text-xl font-bold">PHP{product.price}</Text>

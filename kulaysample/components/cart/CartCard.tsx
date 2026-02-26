@@ -17,31 +17,33 @@ export default function CartCard({
     return(
         <View key={item.id} className="flex-row justify-between items-center my-2">
             <View className="flex-1 flex-row gap-2">
-                <View className="md:w-24 md:h-24 rounded-lg overflow-hidden items-center justify-center">
+                <View className="md:w-24 md:h-24 w-20 h-20 rounded-lg overflow-hidden items-center justify-center">
                     <Image
                         source={images[item.image]}
                         className="flex-1"
                         resizeMode="contain"
                     />
                 </View>
-                <Text className="font-semibold text-lg">{item.name}</Text>
+                <View>
+                    <Text className="font-semibold text-lg">{item.name}</Text>
+                    <View className="flex-row items-center justify-center gap-3">
+                        <Pressable
+                            onPress={() => {handleDecreaseQuantity(item.id)}}
+                            className="rounded-full bg-green w-8 h-8 flex items-center justify-center"
+                        >
+                            <Text className="font-black text-2xl text-white">-</Text>
+                        </Pressable>
+                        <Text className="font-medium">{item.quantity}</Text>
+                        <Pressable
+                            onPress={() => {handleIncreaseQuantity(item.id)}}
+                            className="rounded-full bg-green w-8 h-8 flex items-center justify-center"
+                        >
+                            <Text className="font-black text-2xl text-white">+</Text>
+                        </Pressable>
+                    </View>
+                </View>
             </View>
-            <View className="flex-1 flex-row items-center justify-center gap-3">
-                <Pressable
-                    onPress={() => {handleDecreaseQuantity(item.id)}}
-                    className="rounded-full bg-green w-8 h-8 flex items-center justify-center"
-                >
-                    <Text className="font-black text-2xl text-white">-</Text>
-                </Pressable>
-                <Text className="font-medium">{item.quantity}</Text>
-                <Pressable
-                    onPress={() => {handleIncreaseQuantity(item.id)}}
-                    className="rounded-full bg-green w-8 h-8 flex items-center justify-center"
-                >
-                    <Text className="font-black text-2xl text-white">+</Text>
-                </Pressable>
-            </View>
-            <View className="flex-1">
+            <View className="flex items-center">
                 <Text className="font-medium text-right">{(item.price * item.quantity).toFixed(2)}</Text>
             </View>
         </View>
