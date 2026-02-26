@@ -1,11 +1,23 @@
 import { Text, View } from "react-native";
-import Test from "../components/Test";
+import ProductGallery from "../components/ProductGallery";
+import sampleProducts from "../assets/sampleProducts.json";
+import { useLayoutEffect } from "react";
+import { useNavigation } from "@react-navigation/native";
 
 export default function Index() {
+  const navigation = useNavigation();
+
+  useLayoutEffect(() => {
+    navigation.setOptions({
+      title: "KulaySample",
+      headerShown: true,
+    });
+  }, [navigation]);
+
   return (
-    <View className="flex-1 items-center justify-center bg-red-500">
-      <Text className="italic font-black">NativeWind Working</Text>
-      <Test></Test>
+    <View className="flex-1 md:p-8 p-2">
+      <Text className="font-bold text-3xl">MENU</Text>
+      <ProductGallery productsList={sampleProducts} />
     </View>
   );
 }
