@@ -26,5 +26,12 @@
         "productName": "Ice Cream",
         "description": "Three scoops of vanilla ice cream topped with sprinkles. Three scoops of vanilla ice cream topped with sprinkles. Three scoops of vanilla ice cream topped with sprinkles.",
         "price": 39.99
+    },
+    {
+        "id": "5",
+        "image": "cokefloat",
+        "productName": "Coke Float",
+        "description": "Ice Cold Coke with Vanilla Ice Cream. Ice Cold Coke with Vanilla Ice Cream. Ice Cold Coke with Vanilla Ice Cream. Ice Cold Coke with Vanilla Ice Cream.",
+        "price": 39.99
     }
 ]

@@ -3,4 +3,5 @@ export const images: Record<string, any> = {
   fries: require("../assets/images/fries.jpg"),
   nuggets: require("../assets/images/chickennuggets.jpg"),
   icecream: require("../assets/images/icecream.jpg"),
+  cokefloat: require("../assets/images/cokefloat.jpg"),
 };
