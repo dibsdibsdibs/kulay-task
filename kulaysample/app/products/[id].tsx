@@ -4,12 +4,9 @@ import { Product } from "@/types/product";
 import sampleProducts from "../../assets/sampleProducts.json";
 import { useLocalSearchParams } from "expo-router";
 import { images } from "@/utils/images";
-import { useLayoutEffect } from "react";
-import { useNavigation } from "@react-navigation/native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function FullProduct() {
-    const navigation = useNavigation();
     const params = useLocalSearchParams<{ id: string }>();
     const id = params.id;
     const product: Product | undefined = sampleProducts.find(
@@ -18,13 +15,6 @@ export default function FullProduct() {
     if (!id) return <Text>Product not found</Text>;
     const [selectedQuantity, setSelectedQuantity] = useState(1);
     const totalPrice = (product?.price ?? 0) * selectedQuantity;
-
-    useLayoutEffect(() => {
-        navigation.setOptions({
-          title: "KulaySample",
-          headerShown: true,
-        });
-    }, [navigation]);
 
     const handleIncreaseQuantity = () => {
         if(product?.price){
