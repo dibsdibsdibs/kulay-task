@@ -8,6 +8,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { useDispatch } from "react-redux";
 import { addToCart } from "@/utils/store";
 import { useRouter } from "expo-router";
+import QuantityControl from "@/components/QuantityControl";
 
 export default function FullProductScreen() {
     const params = useLocalSearchParams<{ id: string }>();
@@ -54,30 +55,25 @@ export default function FullProductScreen() {
                 <Image
                     source={images[product.image]}
                     className="flex-1"
-                    resizeMode="cover"
+                    resizeMode="contain"
                 />
             </View>
-            <View className="p-4 w-full flex md:flex-row flex-col">
+            <View className="p-4 w-full flex md:flex-row flex-col gap-4">
                 <View className="flex flex-row justify-between items-center w-full">
                     <Text className="text-xl font-bold">{product.productName}</Text>
                     <Text className="text-xl font-bold">PHP{product.price}</Text>
                 </View>
                 <Text className="text-md">{product.description}</Text>
             </View>
-            <View className="w-24 flex flex-row items-center justify-between">
-                <Pressable
-                    onPress={handleDecreaseQuantity}
-                    className="rounded-full bg-green w-8 h-8 flex items-center justify-center"
-                >
-                    <Text className="font-black text-2xl text-white">-</Text>
-                </Pressable>
-                <Text className="text-lg font-semibold">{selectedQuantity}</Text>
-                <Pressable
-                    onPress={handleIncreaseQuantity}
-                    className="rounded-full bg-green w-8 h-8 flex items-center justify-center"
-                >
-                    <Text className="font-black text-2xl text-white">+</Text>
-                </Pressable>
+            <View className="flex flex-row">
+                <View>
+                    <Text className="text-lg font-semibold">Quantity: </Text>
+                </View>
+                <QuantityControl 
+                    handleDecreaseQuantity={handleDecreaseQuantity}
+                    handleIncreaseQuantity={handleIncreaseQuantity}
+                    quantity={selectedQuantity}
+                />
             </View>
             <View className="absolute bottom-20">
                 <Pressable
