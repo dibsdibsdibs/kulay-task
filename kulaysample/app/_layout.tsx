@@ -1,4 +1,3 @@
-import { Button } from "@react-navigation/elements";
 import "../global.css";
 import { Stack } from "expo-router";
 import CartButton from "../components/header/CartButton";
