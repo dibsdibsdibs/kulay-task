@@ -69,17 +69,18 @@ export default function FullProductScreen() {
                 </View>
                 <Text className="text-md">{product.description}</Text>
             </View>
-            <View className="flex flex-row items-center gap-2 mt-4">
-                <View>
-                    <Text className="text-lg font-semibold">Quantity: </Text>
+            <View className="absolute bottom-20 flex flex-col items-center gap-10">
+                <View className="flex flex-row items-center gap-2 mt-4">
+                    <View>
+                        <Text className="text-lg font-semibold">Quantity: </Text>
+                    </View>
+                    <QuantityControl 
+                        handleDecreaseQuantity={handleDecreaseQuantity}
+                        handleIncreaseQuantity={handleIncreaseQuantity}
+                        quantity={selectedQuantity}
+                    />
                 </View>
-                <QuantityControl 
-                    handleDecreaseQuantity={handleDecreaseQuantity}
-                    handleIncreaseQuantity={handleIncreaseQuantity}
-                    quantity={selectedQuantity}
-                />
-            </View>
-            <View className="absolute bottom-20">
+
                 <Pressable
                     onPress={handleAddToCart}
                     className="rounded-full w-64 bg-green px-4 py-4 flex flex-row items-center justify-between"
