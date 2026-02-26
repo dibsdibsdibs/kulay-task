@@ -40,7 +40,7 @@ export default function FullProduct() {
             addToCart({
                 id: product.id,
                 name: product.productName,
-                price: totalPrice,
+                price: product.price,
                 quantity: selectedQuantity,
             })
         );
@@ -49,14 +49,14 @@ export default function FullProduct() {
 
     return(
         <SafeAreaView className="flex flex-col self-center items-center md:w-1/2 w-full h-full shadow bg-white">
-            <View className="w-full md:h-72 h-56 overflow-hidden items-center justify-center">
+            <View className="w-full md:h-96 h-56 overflow-hidden items-center justify-center">
                 <Image
                     source={images[product.image]}
                     className="flex"
                     resizeMode="cover"
                 />
             </View>
-            <View className="p-4 w-full flex md:flex-row flex-col">
+            <View className="p-4 w-full flex flex-row md:flex-col">
                 <View className="flex flex-row justify-between items-center w-full">
                     <Text className="text-xl font-bold">{product.productName}</Text>
                     <Text className="text-xl font-bold">PHP{product.price}</Text>
@@ -66,16 +66,16 @@ export default function FullProduct() {
             <View className="w-24 flex flex-row items-center justify-between">
                 <Pressable
                     onPress={handleDecreaseQuantity}
-                    className="rounded-full bg-green p-2 flex items-center justify-center"
+                    className="rounded-full bg-green w-8 h-8 flex items-center justify-center"
                 >
-                    <Text className="font-black text-white">-</Text>
+                    <Text className="font-black text-2xl text-white">-</Text>
                 </Pressable>
-                <Text>{selectedQuantity}</Text>
+                <Text className="text-lg font-semibold">{selectedQuantity}</Text>
                 <Pressable
                     onPress={handleIncreaseQuantity}
-                    className="rounded-full bg-green p-2 flex items-center justify-center"
+                    className="rounded-full bg-green w-8 h-8 flex items-center justify-center"
                 >
-                    <Text className="font-black text-white">+</Text>
+                    <Text className="font-black text-2xl text-white">+</Text>
                 </Pressable>
             </View>
             <View className="absolute bottom-20">

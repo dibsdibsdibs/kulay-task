@@ -5,14 +5,25 @@ import sampleProducts from "../../assets/sampleProducts.json";
 import { useLocalSearchParams } from "expo-router";
 import { images } from "@/utils/images";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { RootState, removeFromCart, clearCart } from "../../utils/store";
+import { RootState, clearCart, addQuantityOfProduct, removeQuantityOfProduct } from "../../utils/store";
 import { useDispatch, useSelector } from "react-redux";
 
 export default function Cart() {
     const cart = useSelector((state: RootState) => state.cart.items);
     const dispatch = useDispatch();
 
-    const total = cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
+    console.log(cart);
+
+    const total = cart.reduce((acc, item) => acc + item.price * item.quantity, 0).toFixed(2);
+
+    const handleIncreaseQuantity = (id: string) => {
+        dispatch(addQuantityOfProduct(id));
+    }
+
+    const handleDecreaseQuantity = (id: string) => {
+        dispatch(removeQuantityOfProduct(id));
+    }
+
     return(
         <View className="p-4">
             <View className="items-center flex flex-row justify-between">
@@ -29,11 +40,23 @@ export default function Cart() {
             ) : (
                 cart.map(item => (
                     <View key={item.id} className="flex-row justify-between items-center my-2">
-                        <Text>{item.name} x {item.quantity}</Text>
-                        <Text>PHP {(item.price * item.quantity).toFixed(2)}</Text>
-                        <Pressable onPress={() => dispatch(removeFromCart(item.id))}>
-                            <Text className="text-red-500">Remove</Text>
-                        </Pressable>
+                        <Text className="font-bold text-lg">{item.name}</Text>
+                        <View className="flex flex-row items-center gap-2">
+                            <Pressable
+                                onPress={() => {handleDecreaseQuantity(item.id)}}
+                                className="rounded-full bg-green w-8 h-8 flex items-center justify-center"
+                            >
+                                <Text className="font-black text-2xl text-white">-</Text>
+                            </Pressable>
+                            <Text className="font-medium">{item.quantity}</Text>
+                            <Pressable
+                                onPress={() => {handleIncreaseQuantity(item.id)}}
+                                className="rounded-full bg-green w-8 h-8 flex items-center justify-center"
+                            >
+                                <Text className="font-black text-2xl text-white">+</Text>
+                            </Pressable>
+                        </View>
+                        <Text className="font-medium">PHP {(item.price * item.quantity).toFixed(2)}</Text>
                     </View>
                 ))
             )}

@@ -21,8 +21,20 @@ const cartSlice = createSlice({
                 state.items.push(action.payload);
             }
         },
-        removeFromCart: (state, action: PayloadAction<string>) => {
-            state.items = state.items.filter(i => i.id !== action.payload);
+        addQuantityOfProduct: (state, action: PayloadAction<string>) => {
+            const existing = state.items.find(i => i.id === action.payload);
+            if (existing) {
+                existing.quantity += 1;
+            }
+        },
+        removeQuantityOfProduct: (state, action: PayloadAction<string>) => {
+            const existing = state.items.find(i => i.id === action.payload);
+            if (existing) {
+                existing.quantity -= 1;
+                if (existing.quantity <= 0) {
+                    state.items = state.items.filter(i => i.id !== action.payload);
+                }
+            }
         },
         clearCart: (state) => {
             state.items = [];
@@ -30,7 +42,12 @@ const cartSlice = createSlice({
     },
 });
 
-export const { addToCart, removeFromCart, clearCart } = cartSlice.actions;
+export const { 
+    addToCart,
+    clearCart,
+    addQuantityOfProduct,
+    removeQuantityOfProduct,
+} = cartSlice.actions;
 
 export const store = configureStore({
     reducer: {
