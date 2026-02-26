@@ -17,16 +17,16 @@ export default function CartCard({
     return(
         <View key={item.id} className="flex-row justify-between items-center my-2">
             <View className="flex-1 flex-row gap-2">
-                <View className="md:w-24 md:h-24 w-20 h-20 rounded-lg overflow-hidden items-center justify-center">
+                <View className="w-24 h-24 rounded-lg overflow-hidden items-center justify-center">
                     <Image
                         source={images[item.image]}
                         className="flex-1"
                         resizeMode="contain"
                     />
                 </View>
-                <View>
+                <View className="flex flex-col gap-2">
                     <Text className="font-semibold text-lg">{item.name}</Text>
-                    <View className="flex-row items-center justify-center gap-3">
+                    <View className="flex-row items-center justify-center gap-4 border-2 rounded-full border-gray-300">
                         <Pressable
                             onPress={() => {handleDecreaseQuantity(item.id)}}
                             className="rounded-full bg-green w-8 h-8 flex items-center justify-center"
