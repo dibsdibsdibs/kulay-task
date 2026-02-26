@@ -11,7 +11,7 @@ export default function ProductCard({
 }) {
     return (
         <Pressable 
-            className="flex md:flex-col flex-row md:w-1/5 md:h-72 w-full h-32 gap-2 bg-white-500 shadow p-2 md:p-4 items-center rounded-lg shadow"
+            className="flex md:flex-col flex-row md:w-1/5 md:h-72 w-full h-32 gap-2 bg-white-500 p-2 md:p-4 items-center border-0 border-b-2 border-gray-300 "
             onPress={onPress}
         >
             <View className="md:w-40 md:h-40 w-28 h-28 rounded-lg overflow-hidden items-center justify-center">
