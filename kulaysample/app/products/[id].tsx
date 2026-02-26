@@ -58,14 +58,18 @@ export default function FullProductScreen() {
                     resizeMode="contain"
                 />
             </View>
-            <View className="p-4 w-full flex md:flex-row flex-col gap-4">
-                <View className="flex flex-row justify-between items-center w-full">
-                    <Text className="text-xl font-bold">{product.productName}</Text>
-                    <Text className="text-xl font-bold">PHP{product.price}</Text>
+            <View className="px-6 mt-4 w-full flex md:flex-row flex-col gap-4">
+                <View className="flex-row items-center w-full">
+                    <Text className="text-xl font-semibold flex-1 mr-2">
+                        COKE FLOAT COKE FLOAT COKE FLOAT COKE FLOAT COKE FLOAT COKE FLOAT
+                    </Text>
+                    <Text className="text-xl font-semibold">
+                        {product.price}
+                    </Text>
                 </View>
                 <Text className="text-md">{product.description}</Text>
             </View>
-            <View className="flex flex-row">
+            <View className="flex flex-row items-center gap-2 mt-4">
                 <View>
                     <Text className="text-lg font-semibold">Quantity: </Text>
                 </View>
