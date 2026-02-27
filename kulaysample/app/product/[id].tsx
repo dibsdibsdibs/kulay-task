@@ -50,28 +50,33 @@ export default function FullProductScreen() {
     };
 
     return(
-        <SafeAreaView className="flex flex-col self-center items-center md:w-1/2 w-full h-full shadow bg-white">
-            <View className="w-full md:h-96 h-64 overflow-hidden items-center justify-center">
-                <Image
-                    source={images[product.image]}
-                    className="flex-1"
-                    resizeMode="contain"
-                />
-            </View>
-            <View className="px-6 mt-4 w-full flex flex-col gap-2 overflow-scroll">
-                <View className="flex-row items-center w-full">
-                    <Text className="text-2xl font-semibold flex-1 mr-2">
-                        {product.productName}
-                    </Text>
-                    <QuantityControl 
-                        handleDecreaseQuantity={handleDecreaseQuantity}
-                        handleIncreaseQuantity={handleIncreaseQuantity}
-                        quantity={selectedQuantity}
+        <SafeAreaView className="flex self-center items-center md:w-1/2 w-full h-full shadow bg-white">
+            <ScrollView
+                className="flex-1 flex-col w-full h-full shadow bg-white"
+                contentContainerStyle={{ paddingBottom: 120, alignItems: "center" }}
+            >
+                <View className="w-full md:h-96 h-64 overflow-hidden items-center justify-center">
+                    <Image
+                        source={images[product.image]}
+                        className="flex-1"
+                        resizeMode="contain"
                     />
                 </View>
-                <Text className="text-4xl font-bold text-green">{product.price}</Text>
-                <Text className="text-base">{product.description}</Text>
-            </View>
+                <View className="px-6 mt-4 w-full flex flex-col gap-2 overflow-scroll">
+                    <View className="flex-row items-center w-full">
+                        <Text className="text-2xl font-semibold flex-1 mr-2">
+                            {product.productName}
+                        </Text>
+                        <QuantityControl 
+                            handleDecreaseQuantity={handleDecreaseQuantity}
+                            handleIncreaseQuantity={handleIncreaseQuantity}
+                            quantity={selectedQuantity}
+                        />
+                    </View>
+                    <Text className="text-4xl font-bold text-green">{product.price}</Text>
+                    <Text className="text-base">{product.description}</Text>
+                </View>
+            </ScrollView>
             <View className="absolute bottom-20">
                 <Pressable
                     onPress={handleAddToCart}
