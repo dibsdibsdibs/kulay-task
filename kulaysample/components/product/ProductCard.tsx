@@ -1,5 +1,5 @@
 import { Text, View, Image, Pressable } from "react-native";
-import { images } from "../utils/images";
+import { images } from "../../utils/images";
 import { Product } from "@/types/product";
 
 export default function ProductCard({

@@ -1,5 +1,5 @@
 import { Text, View } from "react-native";
-import ProductGallery from "../components/ProductGallery";
+import ProductGallery from "../components/product/ProductGallery";
 import sampleProducts from "../assets/sampleProducts.json";
 import { useNavigation } from "@react-navigation/native";
 

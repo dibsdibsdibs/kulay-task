@@ -1,5 +1,5 @@
 import { Text, View, Image, Button, Pressable, Alert } from "react-native";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { RootState, clearCart, addQuantityOfProduct, removeQuantityOfProduct } from "../../utils/store";
 import { useDispatch, useSelector } from "react-redux";
 import CartCard from "@/components/cart/CartCard";
@@ -7,6 +7,7 @@ import CartCard from "@/components/cart/CartCard";
 export default function CartScreen() {
     const cart = useSelector((state: RootState) => state.cart.items);
     const dispatch = useDispatch();
+    const prevCartLength = useRef(cart.length);
     const total = cart.reduce((acc, item) => acc + item.price * item.quantity, 0).toFixed(2);
 
     const handleIncreaseQuantity = (id: string) => {
@@ -18,9 +19,11 @@ export default function CartScreen() {
     }
 
     useEffect(() => {
-        if (cart.length === 0) {
-            Alert.alert("Cart is empty");
+        if (cart.length === 0 && prevCartLength.current > 0) {
+            Alert.alert("Cart is now empty. Add items to order.");
         }
+
+        prevCartLength.current = cart.length;
     }, [cart]);
 
     return(

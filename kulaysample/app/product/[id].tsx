@@ -69,7 +69,7 @@ export default function FullProductScreen() {
                         quantity={selectedQuantity}
                     />
                 </View>
-                <Text className="text-3xl font-black text-green">{product.price}</Text>
+                <Text className="text-2xl font-black text-green">{product.price}</Text>
                 <Text className="text-normal">{product.description}</Text>
             </View>
             <View className="absolute bottom-20">
