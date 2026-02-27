@@ -1,10 +1,7 @@
 # kulay-task
-For KULAY mini task
+For KULAY mini task: Simple Add to Cart Functionality
 
-TECH STACK:
-
-Framework: React, React Native, Expo
-
-Language: TypeScript, JavaScript
-
-Styling: NativeWind, TailWind
+### Tech Stack:
+- Framework: React, React Native, Expo
+- Language: TypeScript, JavaScript
+- Styling: NativeWind, TailWind
