@@ -1,10 +1,5 @@
-import { Text, View, Image, Button, Pressable } from "react-native";
-import { useState } from "react";
-import { Product } from "@/types/product";
-import sampleProducts from "../../assets/sampleProducts.json";
-import { useLocalSearchParams } from "expo-router";
-import { images } from "@/utils/images";
-import { SafeAreaView } from "react-native-safe-area-context";
+import { Text, View, Image, Button, Pressable, Alert } from "react-native";
+import { useEffect, useRef } from "react";
 import { RootState, clearCart, addQuantityOfProduct, removeQuantityOfProduct } from "../../utils/store";
 import { useDispatch, useSelector } from "react-redux";
 import CartCard from "@/components/cart/CartCard";
@@ -12,6 +7,7 @@ import CartCard from "@/components/cart/CartCard";
 export default function CartScreen() {
     const cart = useSelector((state: RootState) => state.cart.items);
     const dispatch = useDispatch();
+    const prevCartLength = useRef(cart.length);
     const total = cart.reduce((acc, item) => acc + item.price * item.quantity, 0).toFixed(2);
 
     const handleIncreaseQuantity = (id: string) => {
@@ -21,6 +17,14 @@ export default function CartScreen() {
     const handleDecreaseQuantity = (id: string) => {
         dispatch(removeQuantityOfProduct(id));
     }
+
+    useEffect(() => {
+        if (cart.length === 0 && prevCartLength.current > 0) {
+            Alert.alert("Cart is now empty. Add items to order.");
+        }
+
+        prevCartLength.current = cart.length;
+    }, [cart]);
 
     return(
         <View className="flex flex-col p-4 self-center items-center md:w-1/2 w-full h-full shadow bg-white">
@@ -37,7 +41,7 @@ export default function CartScreen() {
                 <View className="overflow-auto min-h-96">
                     {cart.length === 0 ? (
                         <View className="h-full w-full items-center justify-center ">
-                            <Text className="font-semibold">Your cart is empty.</Text>
+                            <Text className="font-semibold text-lg">Your cart is empty.</Text>
                         </View>
                     ) : (
                         cart.map((item, index) => (

@@ -16,7 +16,7 @@ export default function ProductGallery({
                 <ProductCard
                     key={index}
                     product={product}
-                    onPress={() => router.push(`./products/${product.id}`)}
+                    onPress={() => router.push(`./product/${product.id}`)}
                 />
             ))}
         </View>

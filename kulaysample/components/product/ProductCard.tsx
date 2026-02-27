@@ -1,5 +1,5 @@
 import { Text, View, Image, Pressable } from "react-native";
-import { images } from "../utils/images";
+import { images } from "../../utils/images";
 import { Product } from "@/types/product";
 
 export default function ProductCard({
@@ -22,9 +22,9 @@ export default function ProductCard({
                 />
             </View>
             <View className="flex-1 min-w-0 w-full items-left h-full">
-                <Text className="mt-2 font-bold text-md">{product.productName}</Text>
-                <Text className="text-xs font-gray" numberOfLines={2} ellipsizeMode="tail">{product.description}</Text>
-                <Text className="font-semibold mt-2">PHP{product.price}</Text>
+                <Text className="mt-2 font-bold md:text-xl text-base">{product.productName}</Text>
+                <Text className="md:text-lg text-xs font-gray" numberOfLines={2} ellipsizeMode="tail">{product.description}</Text>
+                <Text className="md:text-lg font-semibold mt-2">PHP{product.price}</Text>
             </View>
         </Pressable >
     );

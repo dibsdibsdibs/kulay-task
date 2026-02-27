@@ -11,12 +11,12 @@ export default function RootLayout() {
         <Stack.Screen
           name="index"
           options={{
-            title: "KulaySampleMenu",
+            title: "Home",
             headerRight: () => <CartButton />,
           }}
         />
         <Stack.Screen
-          name="products/[id]"
+          name="product/[id]"
           options={{
             title: "Details",
           }}
@@ -24,7 +24,7 @@ export default function RootLayout() {
         <Stack.Screen
           name="cart/cart"
           options={{
-            title: "Order Details",
+            title: "Cart",
           }}
         />
       </Stack>

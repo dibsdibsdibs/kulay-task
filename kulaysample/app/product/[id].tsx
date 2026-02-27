@@ -1,4 +1,4 @@
-import { Text, View, Image, Button, Pressable } from "react-native";
+import { Text, View, Image, Pressable, ScrollView } from "react-native";
 import { useState } from "react";
 import { Product } from "@/types/product";
 import sampleProducts from "../../assets/sampleProducts.json";
@@ -50,40 +50,44 @@ export default function FullProductScreen() {
     };
 
     return(
-        <SafeAreaView className="flex flex-col self-center items-center md:w-1/2 w-full h-full shadow bg-white">
-            <View className="w-full md:h-96 h-64 overflow-hidden items-center justify-center">
-                <Image
-                    source={images[product.image]}
-                    className="flex-1"
-                    resizeMode="contain"
-                />
-            </View>
-            <View className="p-4 w-full flex md:flex-row flex-col gap-4">
-                <View className="flex flex-row justify-between items-center w-full">
-                    <Text className="text-xl font-bold">{product.productName}</Text>
-                    <Text className="text-xl font-bold">PHP{product.price}</Text>
+        // <SafeAreaView className="flex self-center items-center md:w-1/2 w-full h-full shadow bg-red-500 ">
+        <View className="flex self-center items-center md:w-1/2 w-full h-full shadow">
+            <ScrollView
+                className="flex md:w-1/2 w-full h-full"
+                contentContainerStyle={{ paddingBottom: 120, alignItems: "center"}}
+            >
+                <View className="w-full h-96 overflow-hidden items-center justify-center">
+                    <Image
+                        source={images[product.image]}
+                        className="w-full h-full"
+                        resizeMode="cover"
+                    />
                 </View>
-                <Text className="text-md">{product.description}</Text>
-            </View>
-            <View className="flex flex-row">
-                <View>
-                    <Text className="text-lg font-semibold">Quantity: </Text>
+                <View className="px-6 mt-4 w-full flex flex-col gap-2 overflow-scroll">
+                    <View className="flex-row items-center w-full">
+                        <Text className="text-3xl font-bold flex-1 mr-2">
+                            {product.productName}
+                        </Text>
+                        <QuantityControl 
+                            handleDecreaseQuantity={handleDecreaseQuantity}
+                            handleIncreaseQuantity={handleIncreaseQuantity}
+                            quantity={selectedQuantity}
+                        />
+                    </View>
+                    <Text className="text-4xl font-bold text-green">{product.price}</Text>
+                    <Text className="text-base">{product.description}</Text>
                 </View>
-                <QuantityControl 
-                    handleDecreaseQuantity={handleDecreaseQuantity}
-                    handleIncreaseQuantity={handleIncreaseQuantity}
-                    quantity={selectedQuantity}
-                />
-            </View>
+            </ScrollView>
             <View className="absolute bottom-20">
                 <Pressable
                     onPress={handleAddToCart}
-                    className="rounded-full w-64 bg-green px-4 py-4 flex flex-row items-center justify-between"
+                    className="rounded-full w-64 bg-green px-8 py-4 flex flex-row items-center justify-between"
                 >
                     <Text className="text-lg font-semibold text-white">Add to Cart</Text>
                     <Text className="text-lg font-semibold text-white">{totalPrice.toFixed(2)}</Text>
                 </Pressable>
             </View>
-        </SafeAreaView>
+        </View>
+        // </SafeAreaView>
     )
 }
