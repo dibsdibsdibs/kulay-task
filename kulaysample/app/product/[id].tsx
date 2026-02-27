@@ -50,21 +50,22 @@ export default function FullProductScreen() {
     };
 
     return(
-        <SafeAreaView className="flex self-center items-center md:w-1/2 w-full h-full shadow bg-white">
+        // <SafeAreaView className="flex self-center items-center md:w-1/2 w-full h-full shadow bg-red-500 ">
+        <View className="flex self-center items-center md:w-1/2 w-full h-full shadow">
             <ScrollView
-                className="flex-1 flex-col w-full h-full shadow bg-white"
-                contentContainerStyle={{ paddingBottom: 120, alignItems: "center" }}
+                className="flex md:w-1/2 w-full h-full"
+                contentContainerStyle={{ paddingBottom: 120, alignItems: "center"}}
             >
-                <View className="w-full md:h-96 h-64 overflow-hidden items-center justify-center">
+                <View className="w-full h-96 overflow-hidden items-center justify-center">
                     <Image
                         source={images[product.image]}
-                        className="flex-1"
-                        resizeMode="contain"
+                        className="w-full h-full"
+                        resizeMode="cover"
                     />
                 </View>
                 <View className="px-6 mt-4 w-full flex flex-col gap-2 overflow-scroll">
                     <View className="flex-row items-center w-full">
-                        <Text className="text-2xl font-semibold flex-1 mr-2">
+                        <Text className="text-3xl font-bold flex-1 mr-2">
                             {product.productName}
                         </Text>
                         <QuantityControl 
@@ -86,6 +87,7 @@ export default function FullProductScreen() {
                     <Text className="text-lg font-semibold text-white">{totalPrice.toFixed(2)}</Text>
                 </Pressable>
             </View>
-        </SafeAreaView>
+        </View>
+        // </SafeAreaView>
     )
 }
