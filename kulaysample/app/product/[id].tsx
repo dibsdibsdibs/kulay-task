@@ -1,4 +1,4 @@
-import { Text, View, Image, Button, Pressable } from "react-native";
+import { Text, View, Image, Pressable, ScrollView } from "react-native";
 import { useState } from "react";
 import { Product } from "@/types/product";
 import sampleProducts from "../../assets/sampleProducts.json";
@@ -58,9 +58,9 @@ export default function FullProductScreen() {
                     resizeMode="contain"
                 />
             </View>
-            <View className="px-6 mt-4 w-full flex flex-col gap-2">
+            <View className="px-6 mt-4 w-full flex flex-col gap-2 overflow-scroll">
                 <View className="flex-row items-center w-full">
-                    <Text className="text-4xl font-semibold flex-1 mr-2">
+                    <Text className="text-2xl font-semibold flex-1 mr-2">
                         {product.productName}
                     </Text>
                     <QuantityControl 
@@ -69,13 +69,13 @@ export default function FullProductScreen() {
                         quantity={selectedQuantity}
                     />
                 </View>
-                <Text className="text-2xl font-black text-green">{product.price}</Text>
-                <Text className="text-normal">{product.description}</Text>
+                <Text className="text-4xl font-bold text-green">{product.price}</Text>
+                <Text className="text-base">{product.description}</Text>
             </View>
             <View className="absolute bottom-20">
                 <Pressable
                     onPress={handleAddToCart}
-                    className="rounded-full w-64 bg-green px-4 py-4 flex flex-row items-center justify-between"
+                    className="rounded-full w-64 bg-green px-8 py-4 flex flex-row items-center justify-between"
                 >
                     <Text className="text-lg font-semibold text-white">Add to Cart</Text>
                     <Text className="text-lg font-semibold text-white">{totalPrice.toFixed(2)}</Text>
