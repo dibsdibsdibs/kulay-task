@@ -58,29 +58,21 @@ export default function FullProductScreen() {
                     resizeMode="contain"
                 />
             </View>
-            <View className="px-6 mt-4 w-full flex md:flex-row flex-col gap-2">
+            <View className="px-6 mt-4 w-full flex flex-col gap-2">
                 <View className="flex-row items-center w-full">
-                    <Text className="text-2xl font-semibold flex-1 mr-2">
+                    <Text className="text-4xl font-semibold flex-1 mr-2">
                         {product.productName}
                     </Text>
-                    <Text className="text-2xl font-semibold">
-                        {product.price}
-                    </Text>
-                </View>
-                <Text className="text-md">{product.description}</Text>
-            </View>
-            <View className="absolute bottom-20 flex flex-col items-center gap-10">
-                <View className="flex flex-row items-center gap-2 mt-4">
-                    <View>
-                        <Text className="text-lg font-semibold">Quantity: </Text>
-                    </View>
                     <QuantityControl 
                         handleDecreaseQuantity={handleDecreaseQuantity}
                         handleIncreaseQuantity={handleIncreaseQuantity}
                         quantity={selectedQuantity}
                     />
                 </View>
-
+                <Text className="text-3xl font-black text-green">{product.price}</Text>
+                <Text className="text-normal">{product.description}</Text>
+            </View>
+            <View className="absolute bottom-20">
                 <Pressable
                     onPress={handleAddToCart}
                     className="rounded-full w-64 bg-green px-4 py-4 flex flex-row items-center justify-between"

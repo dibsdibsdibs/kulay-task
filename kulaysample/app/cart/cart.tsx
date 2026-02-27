@@ -38,7 +38,7 @@ export default function CartScreen() {
                 <View className="overflow-auto min-h-96">
                     {cart.length === 0 ? (
                         <View className="h-full w-full items-center justify-center ">
-                            <Text className="font-semibold">Your cart is empty.</Text>
+                            <Text className="font-semibold text-lg">Your cart is empty.</Text>
                         </View>
                     ) : (
                         cart.map((item, index) => (
